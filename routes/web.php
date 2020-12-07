@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+	//return view('welcome');
+	return view('homepage'); // Display my custom homepage
+});*/
+Route::view("/", "homepage"); // Shortcut, since we only need to display the homepage
