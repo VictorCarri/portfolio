@@ -11,6 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/index.js', 'public/js')
-	.react()
+mix.react("resources/js/index.js", "./public/js/index.js")
 	.sourceMaps();

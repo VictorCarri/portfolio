@@ -11,7 +11,7 @@ import ContactForm from './ContactForm';
 
 /* CSS */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Homepage.css';
+import '../css/Homepage.css';
 
 /**
 * The main homepage website class.
