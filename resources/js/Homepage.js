@@ -10,7 +10,7 @@ import {
 import ContactForm from './ContactForm';
 
 /* CSS */
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Homepage.css';
 
 /**
