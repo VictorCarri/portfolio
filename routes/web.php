@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::view("/", "homepage"); // Shortcut, since we only need to display the homepage
+Route::view("/{path?}", "homepage") // Shortcut - return the homepage view from the root URL
+	->where("path", ".*") // Redirect all paths
+	->name("homepage"); // Name the route for later use
