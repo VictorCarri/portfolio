@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    //'default' => env('MAIL_MAILER', 'smtp'), Victor: this was the original value
+	"default" => "ses", // Use Amazon SES to send e-mail
 
     /*
     |--------------------------------------------------------------------------
@@ -84,8 +85,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'victorcarri@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Victor'),
     ],
 
     /*

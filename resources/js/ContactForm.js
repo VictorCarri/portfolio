@@ -34,6 +34,16 @@ class ContactForm extends React.Component
 	handleSubmit(values, methods)
 	{
 		console.log(values);
+		fetch("http://localhost:8000/api/sendMail", { // Send the email using our route
+			method: "POST",
+			credentials: "same-origin",
+			headers: {
+				"Content-Type": "application/json" // Ensure that the server parses it correctly
+			},
+			body: JSON.stringify(values) // Send the form info as JSON
+		})
+			.then(response => console.log(response))
+			.catch(error => console.log(error));
 	}
 
 	/**
