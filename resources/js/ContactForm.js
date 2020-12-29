@@ -91,7 +91,7 @@ class ContactForm extends React.Component
 							</rb.Form.Label>
 							<rb.Form.Control
 								type="email"
-								name="name"
+								name="email"
 								defaultValue={values.email}
 								isValid={touched.email && !errors.email}
 							/>
@@ -104,6 +104,7 @@ class ContactForm extends React.Component
 								as="textarea"
 								isValid={touched.message && !errors.message}
 								defaultValue={values.message}
+								name="message"
 							/>
 						</rb.Form.Row>
 						<rb.Button variant="primary" type="submit">

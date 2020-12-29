@@ -6,6 +6,6 @@
 	<body>
 		This is an email from <a href="mailto:{{ $from }}">{{ $name }}</a>
 		<br />
-		{{ $message }}
+		{{ $text }}
 	</body>
 </html>

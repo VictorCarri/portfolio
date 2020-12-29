@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendContactForm; // Controller that sends our contact form
+use App\Mail\ContactFormSent; // Our contact-form mailer
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 /* Sends an e-mail using the contact form */
 Route::post("/sendMail", SendContactForm::class)->name("sendEmail");
+
+Route::get("/sendMail/{name}/{from}/{text}", function($name, $from, $text)
+	{
+		return new ContactFormSent($name, $from, $text);
+	}
+);

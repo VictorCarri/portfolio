@@ -44,7 +44,7 @@ class Homepage extends React.Component
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link href="/contact">
+							<Nav.Link href="/profile/contact">
 								Contact
 							</Nav.Link>
 						</Nav.Item>
@@ -53,7 +53,7 @@ class Homepage extends React.Component
 			</Navbar>
 
 			<Switch>
-				<Route path="/contact">
+				<Route path="/profile/contact">
 					<ContactForm />
 				</Route>
 			</Switch>
