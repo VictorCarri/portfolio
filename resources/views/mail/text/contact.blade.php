@@ -1,8 +1,8 @@
 Hello,
 
-You have a new e-mail from {{ $name }} <{{ $from }}>.
+You have a new e-mail from {{ $senderName }} <{{ $senderEmail }}>.
 
-{{ $message }}
+{{ $senderMessage }}
 
 Sincerely,
 Yourself

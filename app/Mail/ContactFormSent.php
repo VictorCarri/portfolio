@@ -15,9 +15,9 @@ class ContactFormSent extends Mailable
     use Queueable, SerializesModels;
 
 	/* Declare public properties so that the template can access them */
-	public $name; // Sender's name
-	public $from; // Sender's email
-	public $text; // Sender's message
+	public $senderName; // Sender's name
+	public $senderEmail; // Sender's email
+	public $senderMessage; // Sender's message
 
     /**
      * Create a new message instance.
@@ -26,9 +26,9 @@ class ContactFormSent extends Mailable
      */
     public function __construct($name, $fromEmail, $text)
     {
-	$this->name = $name;
-	$this->from = $fromEmail;
-	$this->text = $text;
+	$this->senderName = $name;
+	$this->senderEmail = $fromEmail;
+	$this->senderMessage = $text;
     }
 
     /**

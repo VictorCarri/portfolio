@@ -4,8 +4,8 @@
 		<title>Contact Form Email</title>
 	</head>
 	<body>
-		This is an email from <a href="mailto:{{ $from }}">{{ $name }}</a>
+		This is an email from <a href="mailto:{{ $senderEmail }}">{{ $senderName }}</a>
 		<br />
-		{{ $text }}
+		{{ $senderMessage }}
 	</body>
 </html>
