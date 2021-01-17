@@ -23,4 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /* Sends an e-mail using the contact form */
 Route::post("/sendMail", SendContactForm::class)->name("sendEmail");
 
-Route::get("/sendMail/{name}/{from}/{text}", SendContactForm::class)->name("sendEmailTest"); // Testing
+//Route::get("/sendMail/{name}/{from}/{text}", SendContactForm::class)->name("sendEmailTest"); // Testing

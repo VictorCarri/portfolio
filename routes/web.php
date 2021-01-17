@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Homepage with React */
-Route::view("/profile/{path?}", "web.homepage") // Shortcut - return the homepage view from the root URL
+/*Route::view("/profile/{path?}", "web.homepage") // Shortcut - return the homepage view from the root URL
+	->where("path", ".*") // Redirect all paths
+	->name("homepage"); // Name the route for later use*/
+
+/* Homepage with React */
+Route::view("/{path?}", "web.homepage") // Shortcut - return the homepage view from the root URL
 	->where("path", ".*") // Redirect all paths
 	->name("homepage"); // Name the route for later use

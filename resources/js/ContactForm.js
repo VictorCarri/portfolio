@@ -31,19 +31,13 @@ class ContactForm extends React.Component
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleSubmit(values, methods)
+	handleSubmit(values, {setSubmitting, resetForm})
 	{
-		console.log(values);
-		fetch("http://localhost:8000/api/sendMail", { // Send the email using our route
-			method: "POST",
-			credentials: "same-origin",
-			headers: {
-				"Content-Type": "application/json" // Ensure that the server parses it correctly
-			},
-			body: JSON.stringify(values) // Send the form info as JSON
-		})
-			.then(response => console.log(response))
-			.catch(error => console.log(error));
+
+		setSubmitting(true); // When button resets form and form is in the process of submission
+		console.log(JSON.stringify(values));
+		resetForm(); // Resets the form after submission is complete
+		setSubmitting(false); // Sets submitting to false after the form is reset
 	}
 
 	/**
@@ -54,19 +48,17 @@ class ContactForm extends React.Component
 		return (
 			<Formik
 				validationSchema={this.schema}
-				onSubmit={this.handleSubmit}
 				initialValues={this.defaults}
+				onSubmit={this.handleSubmit}
 			>
 			{
 				(
 					{
-						handleSubmit,
-						handleChange,
-						handleBlur,
-						values,
+						errors,
 						touched,
-						isValid,
-						errors
+						handleSubmit,
+						isSubmitting,
+						handleChange
 					}
 				) => 
 				(
@@ -81,8 +73,9 @@ class ContactForm extends React.Component
 							<rb.Form.Control
 								type="text"
 								name="name"
-								defaultValue={values.name}
+								placeholder="Full Name"
 								isValid={touched.name && !errors.name}
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Form.Row>
@@ -92,8 +85,9 @@ class ContactForm extends React.Component
 							<rb.Form.Control
 								type="email"
 								name="email"
-								defaultValue={values.email}
 								isValid={touched.email && !errors.email}
+								placeholder="Email"
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Form.Row>
@@ -103,11 +97,12 @@ class ContactForm extends React.Component
 							<rb.Form.Control
 								as="textarea"
 								isValid={touched.message && !errors.message}
-								defaultValue={values.message}
 								name="message"
+								placeholder="Message"
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
-						<rb.Button variant="primary" type="submit">
+						<rb.Button variant="primary" type="submit" disabled={isSubmitting}>
 							Send your message
 						</rb.Button>
 					</rb.Form>
