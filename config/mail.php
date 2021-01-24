@@ -14,7 +14,7 @@ return [
     */
 
     //'default' => env('MAIL_MAILER', 'smtp'), Victor: this was the original value
-	"default" => "ses", // Use Amazon SES to send e-mail
+	"default" => env("MAIL_MAILER", "ses"), // Victor: default to the env. var. MAIL_MAILER (set to SES in config), or fall back to Amazon SES
 
     /*
     |--------------------------------------------------------------------------
