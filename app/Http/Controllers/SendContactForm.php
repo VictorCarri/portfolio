@@ -28,7 +28,7 @@ class SendContactForm extends Controller
 	
 	// The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error
 
-	Mail::to("victorcarri@gmail.com")->send(new ContactFormSent($validatedData->name, $validatedData->email, $validatedData->message)); // Send the email
+	Mail::to(env("MAIL_FROM_ADDRESS"))->send(new ContactFormSent($validatedData->name, $validatedData->email, $validatedData->message)); // Send the email
 
 	return response()->json( // Return a successful response
 		[
