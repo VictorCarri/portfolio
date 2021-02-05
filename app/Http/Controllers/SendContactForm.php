@@ -15,12 +15,22 @@ class SendContactForm extends Controller
      */
     public function __invoke(Request $request)
     {
-	Log::debug("SendContactForm::_invoke: name = " . $request->name . "\n\temail = " . $request->email . "\n\tmessage = " . $request->message);
-	$name = $request->name;
-	$from = $request->email;
-	$text = $request->message;
-	Mail::to("victorcarri@gmail.com")->send(new ContactFormSent($name, $from, $text));
-	return response()->json(
+	Log::debug("SendContactForm::_invoke: name = " . $request->name . "\n\temail = " . $request->email . "\n\tmessage = " . $request->message); // Debugging
+
+	/* Validate the request parameters */
+	$validatedData = $request->validate(
+		[
+			"name" => ["bail", "alpha_num", "required"],
+			"email" => ["bail", "email", "required"],
+			"message" => ["bail", "alpha_num", "required"]
+		]
+	);
+	
+	// The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error
+
+	Mail::to("victorcarri@gmail.com")->send(new ContactFormSent($validatedData->name, $validatedData->email, $validatedData->message)); // Send the email
+
+	return response()->json( // Return a successful response
 		[
 			"status "=> "200",
 			"message "=> "success"
