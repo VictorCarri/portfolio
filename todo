@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep TODO -R --exclude-dir=node_modules --exclude-dir=public --exclude-dir=vendor --exclude=todo

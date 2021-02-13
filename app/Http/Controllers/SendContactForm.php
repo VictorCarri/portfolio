@@ -6,6 +6,7 @@ use Illuminate\Http\Request; // The Request from the route
 use App\Mail\ContactFormSent; // The Mailable to send
 use Illuminate\Support\Facades\Mail; // Mail facade to send mail with
 use Illuminate\Support\Facades\Log; // Log::debug
+use Illuminate\Support\Str;
 
 class SendContactForm extends Controller
 {
@@ -38,4 +39,16 @@ class SendContactForm extends Controller
 		200
 	);
     }
+
+	protected function prepareForValidation()
+	{
+		/* TODO: Prepare input for validation */
+		$this->merge(
+			[
+				"name" => strip_tags(),
+				"email" => strip_tags(),
+				"message" => strip_tags()
+			]
+		);
+	}
 }
