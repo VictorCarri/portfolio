@@ -21,12 +21,33 @@ class SendContactFormTest extends TestCase
 
 	public function testSendContactForm()
 	{
+		/* Make the fake request */
 		Mail::fake(); // Ensure that we don't actually send an email!
-		$fakeData = [ // TODO: Create fake data, then test that posting to this API route would send an email if faker weren't on
-			"name" =>
-			"email" =>
-			"message" =>
+		$fakeData = [
+			"name" => "abc",
+			"email" => "test@test.com",
+			"message" => "def"
 		];
-		$this->post("/api/sendMail");
+		$response = $this->postJson(route("sendEmail"), $fakeData); // Send the request to send an email
+
+		/* Debugging */
+		echo "Response header dump\n";
+		$response->dumpHeaders();
+
+		echo "Session data dump\n";
+		$response->dumpSession();
+
+		echo "Response dump\n";
+		$response->dump();
+
+		$response
+			->assertStatus(200) // The response should be successful
+			->assertJson(
+				[
+					"message" => "success"
+				]
+			);
+
+		Mail::assertSent(ContactFormSent::class); // Ensure that the right type of email was sent. The mailable's content is tested separately.
 	}
 }
