@@ -29,13 +29,19 @@ class ContactForm extends React.Component
 
 		/* Bind event handlers */
 		this.handleSubmit = this.handleSubmit.bind(this);
+
+		/* Setup to contact the Laravel API */
+		this.apiURI = new URL("http://localhost:8000/api/sendMail");
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})
 	{
 
 		setSubmitting(true); // When button resets form and form is in the process of submission
-		console.log(JSON.stringify(values));
+		fetch(this.apiURI, {
+				method: "POST"
+			}
+		);
 		resetForm(); // Resets the form after submission is complete
 		setSubmitting(false); // Sets submitting to false after the form is reset
 	}

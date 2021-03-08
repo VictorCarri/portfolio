@@ -26,29 +26,13 @@ class SendContactForm extends Controller
 			"message" => ["bail", "alpha_num", "required"]
 		]
 	);
-	
 	// The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error
-
-	Mail::to(env("MAIL_FROM_ADDRESS"))->send(new ContactFormSent($validatedData->name, $validatedData->email, $validatedData->message)); // Send the email
-
+	Mail::to(env("MAIL_FROM_ADDRESS"))->send(new ContactFormSent($validatedData["name"], $validatedData["email"], $validatedData["message"])); // Send the email
 	return response()->json( // Return a successful response
 		[
-			"status "=> "200",
-			"message "=> "success"
+			"message" => "success"
 		],
 		200
 	);
     }
-
-	protected function prepareForValidation()
-	{
-		/* TODO: Prepare input for validation */
-		$this->merge(
-			[
-				"name" => strip_tags(),
-				"email" => strip_tags(),
-				"message" => strip_tags()
-			]
-		);
-	}
 }

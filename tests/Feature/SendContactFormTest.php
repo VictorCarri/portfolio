@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Mail;
 **/
 class SendContactFormTest extends TestCase
 {
-    /*public function testExample()
-    {
-        $response = $this->get('/');
-        $response->assertStatus(200);
-    }*/
-
-	public function testSendContactForm()
+	public function testContactApiResponse()
 	{
 		/* Make the fake request */
 		Mail::fake(); // Ensure that we don't actually send an email!
@@ -30,7 +24,7 @@ class SendContactFormTest extends TestCase
 		];
 		$response = $this->postJson(route("sendEmail"), $fakeData); // Send the request to send an email
 
-		/* Debugging */
+		/* Debugging 
 		echo "Response header dump\n";
 		$response->dumpHeaders();
 
@@ -38,7 +32,7 @@ class SendContactFormTest extends TestCase
 		$response->dumpSession();
 
 		echo "Response dump\n";
-		$response->dump();
+		$response->dump();*/
 
 		$response
 			->assertStatus(200) // The response should be successful
@@ -47,7 +41,21 @@ class SendContactFormTest extends TestCase
 					"message" => "success"
 				]
 			);
+	}
 
+	/**
+	* @desc This test ensures that the mail API sends the correct response.
+	**/
+	public function testCorrectMailableSent()
+	{
+		/* Make the fake request */
+		Mail::fake(); // Ensure that we don't actually send an email!
+		$fakeData = [
+			"name" => "abc",
+			"email" => "test@test.com",
+			"message" => "def"
+		];
+		$response = $this->postJson(route("sendEmail"), $fakeData); // Send the request to send an email
 		Mail::assertSent(ContactFormSent::class); // Ensure that the right type of email was sent. The mailable's content is tested separately.
 	}
 }
