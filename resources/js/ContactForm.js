@@ -36,12 +36,31 @@ class ContactForm extends React.Component
 
 	handleSubmit(values, {setSubmitting, resetForm})
 	{
-
 		setSubmitting(true); // When button resets form and form is in the process of submission
+		console.log("Values passed to handleSubmit: %o", values);
+		
+		/* Convert the object to form data for the request */
+		var toSend = new FormData();
+	
+		for (var key in values)
+		{
+			console.log("values[%s] = %o", key, values[key]);
+			toSend.append(key, values[key]);
+		}
+
+		for (var key of toSend.keys())
+		{
+			console.log("Key: %o\ntoSend[%o] = %o", key, key, toSend.get(key));
+		}
+
 		fetch(this.apiURI, {
-				method: "POST"
+				method: "POST",
+				body: toSend, // Send the form data
+				mode: "same-origin", // No need for CORS
+				"credentials": "omit", // Don't need cookies to send mail
 			}
-		);
+		)
+		.then(res => console.log(res));
 		resetForm(); // Resets the form after submission is complete
 		setSubmitting(false); // Sets submitting to false after the form is reset
 	}

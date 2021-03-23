@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendContactForm; // Controller that sends our contact form
-//use App\Mail\ContactFormSent; // Our contact-form mailer
 
 /*
 |--------------------------------------------------------------------------
