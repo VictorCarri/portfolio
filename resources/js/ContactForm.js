@@ -60,7 +60,9 @@ class ContactForm extends React.Component
 				"credentials": "omit", // Don't need cookies to send mail
 			}
 		)
-		.then(res => console.log(res));
+		.then(res => {
+			console.log("API fetch result: %o", res);
+		});
 		resetForm(); // Resets the form after submission is complete
 		setSubmitting(false); // Sets submitting to false after the form is reset
 	}

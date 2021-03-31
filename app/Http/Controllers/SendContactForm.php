@@ -16,7 +16,7 @@ class SendContactForm extends Controller
      */
     public function __invoke(Request $request)
     {
-	Log::debug("SendContactForm::_invoke: name = " . $request->name . "\n\temail = " . $request->email . "\n\tmessage = " . $request->message); // Debugging
+	Log::debug("SendContactForm::_invoke before validation: name = " . $request->name . "\n\temail = " . $request->email . "\n\tmessage = " . $request->message); // Debugging
 
 	/* Validate the request parameters */
 	$validatedData = $request->validate(
@@ -26,8 +26,10 @@ class SendContactForm extends Controller
 			"message" => ["bail", "alpha_num", "required"]
 		]
 	);
-	// The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error
+
+	/* The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error */
 	Mail::to(env("MAIL_FROM_ADDRESS"))->send(new ContactFormSent($validatedData["name"], $validatedData["email"], $validatedData["message"])); // Send the email
+	Log::debug("SendContactForm::__invoke: called method to send mail");
 	return response()->json( // Return a successful response
 		[
 			"message" => "success"
