@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log; // Debugging
 
 /**
 * Handles sending an email from the Contact form.
@@ -26,9 +27,11 @@ class ContactFormSent extends Mailable
      */
     public function __construct($name, $fromEmail, $text)
     {
+	Log::debug("ContactFormSent::__construct\n\tname = \"$name\"\n\tfromEmail = \"$fromEmail\"\n\ttext = \"$text\"");
 	$this->senderName = $name;
 	$this->senderEmail = $fromEmail;
 	$this->senderMessage = $text;
+	Log::debug("ContactFormSent::__construct\n\t\$this->senderName = \"\$$this->senderName"\"\n\t\$this->senderEmail = \"$this->senderEmail\"\n\t\$this->text = \"$text\"");
     }
 
     /**
@@ -38,6 +41,7 @@ class ContactFormSent extends Mailable
      */
     public function build()
     {
+	Log::debug("ContactFormSent::build called");
         return $this->view('mail.html.contact') // Default to the HTML view
 		->text("mail.text.contact"); // Plaintext view
     }
