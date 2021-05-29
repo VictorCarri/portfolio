@@ -12,7 +12,9 @@
         "aws/aws-sdk-php": "^3.171",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "graham-campbell/github": "^10.3",
         "guzzlehttp/guzzle": "^7.2",
+        "http-interop/http-factory-guzzle": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5"
     },
