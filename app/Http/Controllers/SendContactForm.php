@@ -26,6 +26,7 @@ class SendContactForm extends Controller
 			"message" => ["bail", "alpha_num", "required"]
 		]
 	);
+	Log::debug("SendContactForm::__invoke: validatedData = \"" . var_export($validatedData, TRUE) . "\"");
 
 	/* The code below will only run if the validation succeeds. Otherwise, Laravel will return an HTTP 422 with a JSON error */
 	Log::debug("SendContactForm::__invoke: sending mail to " . env("MAIL_TO_ADDRESS"));
