@@ -29,11 +29,42 @@ class ContactForm extends React.Component
 
 		/* Bind event handlers */
 		this.handleSubmit = this.handleSubmit.bind(this);
+
+		/* Setup to contact the Laravel API */
+		this.apiURI = new URL("http://localhost:8000/api/sendMail");
 	}
 
-	handleSubmit(values, methods)
+	handleSubmit(values, {setSubmitting, resetForm})
 	{
-		console.log(values);
+		setSubmitting(true); // When button resets form and form is in the process of submission
+		console.log("Values passed to handleSubmit: %o", values);
+		
+		/* Convert the object to form data for the request */
+		var toSend = new FormData();
+	
+		for (var key in values)
+		{
+			console.log("values[%s] = %o", key, values[key]);
+			toSend.append(key, values[key]);
+		}
+
+		for (var key of toSend.keys())
+		{
+			console.log("Key: %o\ntoSend[%o] = %o", key, key, toSend.get(key));
+		}
+
+		fetch(this.apiURI, {
+				method: "POST",
+				body: toSend, // Send the form data
+				mode: "same-origin", // No need for CORS
+				"credentials": "omit", // Don't need cookies to send mail
+			}
+		)
+		.then(res => {
+			console.log("API fetch result: %o", res);
+		});
+		resetForm(); // Resets the form after submission is complete
+		setSubmitting(false); // Sets submitting to false after the form is reset
 	}
 
 	/**
@@ -44,19 +75,17 @@ class ContactForm extends React.Component
 		return (
 			<Formik
 				validationSchema={this.schema}
-				onSubmit={this.handleSubmit}
 				initialValues={this.defaults}
+				onSubmit={this.handleSubmit}
 			>
 			{
 				(
 					{
-						handleSubmit,
-						handleChange,
-						handleBlur,
-						values,
+						errors,
 						touched,
-						isValid,
-						errors
+						handleSubmit,
+						isSubmitting,
+						handleChange
 					}
 				) => 
 				(
@@ -71,8 +100,9 @@ class ContactForm extends React.Component
 							<rb.Form.Control
 								type="text"
 								name="name"
-								defaultValue={values.name}
+								placeholder="Full Name"
 								isValid={touched.name && !errors.name}
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Form.Row>
@@ -81,9 +111,10 @@ class ContactForm extends React.Component
 							</rb.Form.Label>
 							<rb.Form.Control
 								type="email"
-								name="name"
-								defaultValue={values.email}
+								name="email"
 								isValid={touched.email && !errors.email}
+								placeholder="Email"
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Form.Row>
@@ -93,10 +124,12 @@ class ContactForm extends React.Component
 							<rb.Form.Control
 								as="textarea"
 								isValid={touched.message && !errors.message}
-								defaultValue={values.message}
+								name="message"
+								placeholder="Message"
+								onChange={handleChange}
 							/>
 						</rb.Form.Row>
-						<rb.Button variant="primary" type="submit">
+						<rb.Button variant="primary" type="submit" disabled={isSubmitting}>
 							Send your message
 						</rb.Button>
 					</rb.Form>

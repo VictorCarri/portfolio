@@ -32,7 +32,7 @@ class Homepage extends React.Component
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="collapsible-navbar" />
 				<Navbar.Collapse id="collapsible-navbar">
-					<Nav activeKey="/home" onSelect={(selectedKey) => alert(`Selected ${selectedKey}`)} className="justify-content-end" variant="pills">
+					<Nav activeKey="/home" className="justify-content-end" variant="pills">
 						<Nav.Item>
 							<Nav.Link href="/">
 								Home
