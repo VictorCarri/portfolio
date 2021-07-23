@@ -61,7 +61,18 @@ class ContactForm extends React.Component
 			}
 		)
 		.then(res => {
-			console.log("API fetch result: %o", res);
+			console.log(res);
+
+			if (res.ok)
+			{
+				alert("Your email was sent.");
+			}
+
+			else
+			{
+				alert("An error occurred while sending your response.");
+				console.log(res);
+			}
 		});
 		resetForm(); // Resets the form after submission is complete
 		setSubmitting(false); // Sets submitting to false after the form is reset
