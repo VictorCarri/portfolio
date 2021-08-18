@@ -60,12 +60,24 @@ class ContactForm extends React.Component
 				"credentials": "omit", // Don't need cookies to send mail
 			}
 		)
+		.then(res => res.json())
 		.then(res => {
-			console.log("API fetch result: %o", res);
-		});
+			console.log(res);
+
+			if (res.formSent)
+			{
+				alert("Thanks for sending me a message. I'll get back to you ASAP.");
+			}
+
+			else
+			{
+				alert("An error occurred while sending your response.");
+			}
+		})
+		.catch(err => console.log("Error occurred while sending mail: %o", err));
 		resetForm(); // Resets the form after submission is complete
 		setSubmitting(false); // Sets submitting to false after the form is reset
-	}
+	}	
 
 	/**
 	* Main render method called by React.
@@ -84,8 +96,7 @@ class ContactForm extends React.Component
 						errors,
 						touched,
 						handleSubmit,
-						isSubmitting,
-						handleChange
+						isSubmitting
 					}
 				) => 
 				(
@@ -93,6 +104,11 @@ class ContactForm extends React.Component
 						noValidate
 						onSubmit={handleSubmit}
 					>
+						<rb.Form.Row>
+							<rb.Form.Text>
+								Please fill in your name, your email, and the message you&apos;d like to send me. I&apos;ll get back to you as soon as possible.
+							</rb.Form.Text>
+						</rb.Form.Row>
 						<rb.Form.Row>
 							<rb.Form.Label>
 								Name
@@ -102,8 +118,11 @@ class ContactForm extends React.Component
 								name="name"
 								placeholder="Full Name"
 								isValid={touched.name && !errors.name}
-								onChange={handleChange}
+								aria-describedby="nameHelpBlock"
 							/>
+							<rb.Form.Text id="nameHelpBlock" muted>
+								Please enter your name - whatever you&apos;d like me to address you as.
+							</rb.Form.Text>
 						</rb.Form.Row>
 						<rb.Form.Row>
 							<rb.Form.Label>
@@ -114,7 +133,6 @@ class ContactForm extends React.Component
 								name="email"
 								isValid={touched.email && !errors.email}
 								placeholder="Email"
-								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Form.Row>
@@ -126,7 +144,6 @@ class ContactForm extends React.Component
 								isValid={touched.message && !errors.message}
 								name="message"
 								placeholder="Message"
-								onChange={handleChange}
 							/>
 						</rb.Form.Row>
 						<rb.Button variant="primary" type="submit" disabled={isSubmitting}>

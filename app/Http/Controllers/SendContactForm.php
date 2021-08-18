@@ -34,7 +34,7 @@ class SendContactForm extends Controller
 	Log::debug("SendContactForm::__invoke: sent mail with params:\n\tname = \"" . $validatedData["name"] . "\"\n\temail = \"" . $validatedData["email"] . "\"\n\tMessage = \"" . $validatedData["message"] . "\"");
 	return response()->json( // Return a successful response
 		[
-			"message" => "success"
+			"formSent" => true
 		],
 		200
 	);
