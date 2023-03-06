@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+let mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.react("resources/js/index.js", "./public/js/index.js")
+mix.js("resources/js/index.js", "public/js/index.js")
+	.react()
 	.sourceMaps();

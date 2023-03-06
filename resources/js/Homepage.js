@@ -25,7 +25,7 @@ class Homepage extends React.Component
 	render()
 	{
 		return (
-		<Router>
+		<Router basename="/">
 			<Navbar bg="light" expand="lg" collapseOnSelect>
 				<Navbar.Brand href="#home">
 					Victor Carri
