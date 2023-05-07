@@ -31,7 +31,7 @@ class ContactForm extends React.Component
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		/* Setup to contact the Laravel API */
-		this.apiURI = new URL("http://localhost:8000/api/sendMail");
+		this.apiURI = new URL(location.protocol + "//" + location.host + "/api/sendMail");
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})
@@ -60,9 +60,10 @@ class ContactForm extends React.Component
 				"credentials": "omit", // Don't need cookies to send mail
 			}
 		)
+		.then(res => console.log("Raw result of POST: %o", res))
 		.then(res => res.json())
 		.then(res => {
-			console.log(res);
+			console.log("Result after being converted to JSON: %o", res);
 
 			if (res.formSent)
 			{
@@ -86,8 +87,8 @@ class ContactForm extends React.Component
 	{
 		return (
 			<Formik
-				validationSchema={this.schema}
 				initialValues={this.defaults}
+				validationSchema={this.schema}
 				onSubmit={this.handleSubmit}
 			>
 			{
@@ -146,7 +147,7 @@ class ContactForm extends React.Component
 								placeholder="Message"
 							/>
 						</rb.Form.Row>
-						<rb.Button variant="primary" type="submit" disabled={isSubmitting}>
+						<rb.Button variant="primary" type="submit" disabled={isSubmitting} name="submit">
 							Send your message
 						</rb.Button>
 					</rb.Form>

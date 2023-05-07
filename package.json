@@ -7,23 +7,26 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "test": "jest"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.12.10",
         "axios": "^0.21.1",
         "bootstrap": "^4.5.3",
         "cross-env": "^7.0",
+        "jest": "^29.5.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.20",
         "resolve-url-loader": "^3.1.2",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "babel-jest": "^29.5.0",
         "formik": "^2.2.6",
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
-        "react": "^17.0.1",
+        "react": "^18.2.0",
         "react-bootstrap": "^1.4.0",
         "react-dom": "^17.0.1",
         "react-router-dom": "^5.2.0",

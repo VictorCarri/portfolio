@@ -38,7 +38,7 @@ class SendContactFormTest extends TestCase
 			->assertStatus(200) // The response should be successful
 			->assertJson(
 				[
-					"message" => "success"
+					"formSent" => true
 				]
 			);
 	}
