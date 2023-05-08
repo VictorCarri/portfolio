@@ -23,7 +23,7 @@ class ContactForm extends React.Component
 			{
 				name: yup.string().required().default(this.defaults.name),
 				email: yup.string().email().required().default(this.defaults.email),
-				message: yup.string().required().min(1).ensure().trim().default("Your message") // ensure() transforms undefined and null values into empty strings
+				message: yup.string().required().min(1).ensure().trim().default(this.defaults.message) // ensure() transforms undefined and null values into empty strings
 			}
 		);
 
@@ -57,7 +57,7 @@ class ContactForm extends React.Component
 				method: "POST",
 				body: toSend, // Send the form data
 				mode: "same-origin", // No need for CORS
-				"credentials": "omit", // Don't need cookies to send mail
+				credentials: "omit", // Don't need cookies to send mail
 			}
 		)
 		.then(res => console.log("Raw result of POST: %o", res))
@@ -105,12 +105,12 @@ class ContactForm extends React.Component
 						noValidate
 						onSubmit={handleSubmit}
 					>
-						<rb.Form.Row>
+						<rb.Form.Group>
 							<rb.Form.Text>
 								Please fill in your name, your email, and the message you&apos;d like to send me. I&apos;ll get back to you as soon as possible.
 							</rb.Form.Text>
-						</rb.Form.Row>
-						<rb.Form.Row>
+						</rb.Form.Group>
+						<rb.Form.Group>
 							<rb.Form.Label>
 								Name
 							</rb.Form.Label>
@@ -124,8 +124,8 @@ class ContactForm extends React.Component
 							<rb.Form.Text id="nameHelpBlock" muted>
 								Please enter your name - whatever you&apos;d like me to address you as.
 							</rb.Form.Text>
-						</rb.Form.Row>
-						<rb.Form.Row>
+						</rb.Form.Group>
+						<rb.Form.Group>
 							<rb.Form.Label>
 								Email
 							</rb.Form.Label>
@@ -135,8 +135,8 @@ class ContactForm extends React.Component
 								isValid={touched.email && !errors.email}
 								placeholder="Email"
 							/>
-						</rb.Form.Row>
-						<rb.Form.Row>
+						</rb.Form.Group>
+						<rb.Form.Group>
 							<rb.Form.Label>
 								Message
 							</rb.Form.Label>
@@ -146,7 +146,8 @@ class ContactForm extends React.Component
 								name="message"
 								placeholder="Message"
 							/>
-						</rb.Form.Row>
+						</rb.Form.Group>
+						{errors.name && <div id="feedback">{errors.name}</div>}
 						<rb.Button variant="primary" type="submit" disabled={isSubmitting} name="submit">
 							Send your message
 						</rb.Button>
@@ -154,6 +155,31 @@ class ContactForm extends React.Component
 				)
 			}
 			</Formik>
+			/*<Formik
+				initialValues={this.defaults}
+				validationSchema={this.schema}
+				onSubmit={this.handleSubmit}
+			>
+			{
+				(
+					{
+						errors,
+						touched,
+						handleSubmit,
+						isSubmitting
+					}
+				) =>
+				(
+					<rb.Form
+						noValidate
+						onSubmit={handleSubmit}
+					>
+						<rb.Form.Row>
+						</rb.Form.Row>
+					</rb.Form>
+				)
+			}
+			</Formik>*/
 		);
 	}
 }
