@@ -34,6 +34,9 @@ class ContactFormSentTest extends TestCase
 		$mailable->assertSeeInText($testEmail);
 	}
 
+	/**
+	* @desc Tests that the text and html templates contain the message that's passed to the mailable object.
+	**/
 	public function testMessage()
 	{
 		$testMessage = "Hello abacd কারি্ত ക്ിദാികാ κδργφολξφγ dsfjdsklfé"; // Random string - unlikely to be generated accidentally
