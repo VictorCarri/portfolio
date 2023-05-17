@@ -21,9 +21,12 @@ class SendContactForm extends Controller
 	/* Validate the request parameters */
 	$validatedData = $request->validate(
 		[
-			"name" => ["bail", "alpha_num", "required"],
+			/*"name" => ["bail", "alpha_num", "required"],
 			"email" => ["bail", "email", "required"],
-			"message" => ["bail", "alpha_num", "required"]
+			"message" => ["bail", "alpha_num", "required"]*/
+			"name" => "bail|alpha_num|required",
+			"email" => "bail|email|required",
+			"message" => "bail|alpha_num|required"
 		]
 	);
 

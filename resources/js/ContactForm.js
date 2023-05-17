@@ -60,9 +60,24 @@ class ContactForm extends React.Component
 				credentials: "omit", // Don't need cookies to send mail
 			}
 		)
-		.then(res => console.log("Raw result of POST: %o", res))
-		.then(res => res.json())
+		.then(res => { 
+			try
+			{
+				console.log("Raw result of POST: %o", res);
+				return;
+				window.postResult = res;
+				window.jsonRes = res.json();
+				return window.jsonRes;
+			}
+
+			catch (e)
+			{
+				console.log("Error while converting result to json: %o", e);
+				throw e;
+			}
+		})
 		.then(res => {
+			return;
 			console.log("Result after being converted to JSON: %o", res);
 
 			if (res.formSent)
@@ -155,31 +170,6 @@ class ContactForm extends React.Component
 				)
 			}
 			</Formik>
-			/*<Formik
-				initialValues={this.defaults}
-				validationSchema={this.schema}
-				onSubmit={this.handleSubmit}
-			>
-			{
-				(
-					{
-						errors,
-						touched,
-						handleSubmit,
-						isSubmitting
-					}
-				) =>
-				(
-					<rb.Form
-						noValidate
-						onSubmit={handleSubmit}
-					>
-						<rb.Form.Row>
-						</rb.Form.Row>
-					</rb.Form>
-				)
-			}
-			</Formik>*/
 		);
 	}
 }
