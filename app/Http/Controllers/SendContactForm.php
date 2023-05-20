@@ -6,7 +6,8 @@ use Illuminate\Http\Request; // The Request from the route
 use App\Mail\ContactFormSent; // The Mailable to send
 use Illuminate\Support\Facades\Mail; // Mail facade to send mail with
 use Illuminate\Support\Facades\Log; // Log::debug
-use Illuminate\Support\Str;
+#use Illuminate\Support\Str; 
+use Illuminate\Validation\ValidationException; // To log what the exception says
 
 class SendContactForm extends Controller
 {
@@ -16,19 +17,25 @@ class SendContactForm extends Controller
      */
     public function __invoke(Request $request)
     {
-	Log::debug("SendContactForm::_invoke before validation: name = " . $request->name . "\n\temail = " . $request->email . "\n\tmessage = " . $request->message); // Debugging
+	Log::debug("SendContactForm::_invoke before validation:\nname = \"" . $request->name . "\"\nemail = \"" . $request->email . "\"\nmessage = \"" . $request->message . "\""); // Debugging
 
 	/* Validate the request parameters */
-	$validatedData = $request->validate(
-		[
-			/*"name" => ["bail", "alpha_num", "required"],
-			"email" => ["bail", "email", "required"],
-			"message" => ["bail", "alpha_num", "required"]*/
-			"name" => "bail|alpha_num|required",
-			"email" => "bail|email|required",
-			"message" => "bail|alpha_num|required"
-		]
-	);
+	try
+	{
+		$validatedData = $request->validate(
+			[
+				"name" => ["alpha_num"],
+				"email" => ["email"],
+				"message" => ["alpha_num"]
+			]
+		);
+	}
+
+	catch (ValidationException $ve)
+	{
+		Log::debug("SendContactForm: caught validation exception.\nMessage: " . $ve->getMessage());
+		throw $ve;
+	}
 
 	Log::debug("SendContactForm::__invoke: validatedData = \"" . var_export($validatedData, TRUE) . "\"");
 

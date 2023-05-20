@@ -64,7 +64,6 @@ class ContactForm extends React.Component
 			try
 			{
 				console.log("Raw result of POST: %o", res);
-				return;
 				window.postResult = res;
 				window.jsonRes = res.json();
 				return window.jsonRes;
@@ -149,7 +148,11 @@ class ContactForm extends React.Component
 								name="email"
 								isValid={touched.email && !errors.email}
 								placeholder="Email"
+								aria-describedby="emHlpBlck"
 							/>
+							<rb.Form.Text id="emHlpBlck" muted>
+								Please enter an e-mail I can reach you at.
+							</rb.Form.Text>
 						</rb.Form.Group>
 						<rb.Form.Group>
 							<rb.Form.Label>
@@ -160,7 +163,11 @@ class ContactForm extends React.Component
 								isValid={touched.message && !errors.message}
 								name="message"
 								placeholder="Message"
+								aria-describedby="msgHlpBlck"
 							/>
+							<rb.Form.Text id="msgHlpBlck" muted>
+								Please enter your message.
+							</rb.Form.Text>
 						</rb.Form.Group>
 						{errors.name && <div id="feedback">{errors.name}</div>}
 						<rb.Button variant="primary" type="submit" disabled={isSubmitting} name="submit">
