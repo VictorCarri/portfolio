@@ -37,22 +37,21 @@ class ContactForm extends React.Component
 	handleSubmit(values, {setSubmitting, resetForm})
 	{
 		setSubmitting(true); // When button resets form and form is in the process of submission
-		console.log("Values passed to handleSubmit: %o", values);
+		/*console.log("Values passed to handleSubmit: %o", values);
 		
 		/* Convert the object to form data for the request */
 		var toSend = new FormData();
 	
-		for (var key in values)
+		/*for (var key in values)
 		{
 			console.log("values[%s] = %o", key, values[key]);
 			toSend.append(key, values[key]);
-		}
+		}*/
 
-		for (var key of toSend.keys())
-		{
-			console.log("Key: %o\ntoSend[%o] = %o", key, key, toSend.get(key));
-		}
-
+		toSend.append("name", document.querySelectorAll("#nameInp")[0].value);
+		toSend.append("email", document.querySelectorAll("#emInp")[0].value);
+		toSend.append("message", document.querySelectorAll("#msgInp")[0].value);
+		console.log(toSend);
 		fetch(this.apiURI, {
 				method: "POST",
 				body: toSend, // Send the form data
@@ -134,6 +133,7 @@ class ContactForm extends React.Component
 								placeholder="Full Name"
 								isValid={touched.name && !errors.name}
 								aria-describedby="nameHelpBlock"
+								id="nameInp"
 							/>
 							<rb.Form.Text id="nameHelpBlock" muted>
 								Please enter your name - whatever you&apos;d like me to address you as.
@@ -149,6 +149,7 @@ class ContactForm extends React.Component
 								isValid={touched.email && !errors.email}
 								placeholder="Email"
 								aria-describedby="emHlpBlck"
+								id="emInp"
 							/>
 							<rb.Form.Text id="emHlpBlck" muted>
 								Please enter an e-mail I can reach you at.
@@ -164,6 +165,7 @@ class ContactForm extends React.Component
 								name="message"
 								placeholder="Message"
 								aria-describedby="msgHlpBlck"
+								id="msgInp"
 							/>
 							<rb.Form.Text id="msgHlpBlck" muted>
 								Please enter your message.
