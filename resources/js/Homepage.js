@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import {
 	BrowserRouter as Router,
-	Switch,
+	Routes,
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
@@ -53,13 +53,12 @@ class Homepage extends React.Component
 				</Navbar.Collapse>
 			</Navbar>
 
-			<Switch>
+			<Routes>
 				<Route path="/contact" element={<ContactForm />}>
-					<ContactForm />
 				</Route>
 				<Route path="/wof" element={<WOFSpinAnalyser />}>
 				</Route>
-			</Switch>
+			</Routes>
 		</Router>
 		);
 	}
