@@ -8,6 +8,7 @@ import {
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
+import WOFSpinAnalyser from './WOFSpinAnalyser';
 
 /* CSS */
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,8 +40,8 @@ class Homepage extends React.Component
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link href="/projects">
-								Projects
+							<Nav.Link href="/wof">
+								Wheel of Fortune Spin Analyser
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
@@ -53,8 +54,10 @@ class Homepage extends React.Component
 			</Navbar>
 
 			<Switch>
-				<Route path="/contact">
+				<Route path="/contact" element={<ContactForm />}>
 					<ContactForm />
+				</Route>
+				<Route path="/wof" element={<WOFSpinAnalyser />}>
 				</Route>
 			</Switch>
 		</Router>
