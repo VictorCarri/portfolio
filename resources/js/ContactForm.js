@@ -84,7 +84,7 @@ class ContactForm extends React.Component
 	**/
 	render()
 	{
-		return (
+		/*return (
 			<Formik
 				validationSchema={this.schema}
 				initialValues={this.defaults}
@@ -152,6 +152,14 @@ class ContactForm extends React.Component
 					</rb.Form>
 				)
 			}
+			</Formik>*/
+		//return (<b>Hello, world!</b>);
+		return (
+			<Formik
+				validationSchema={this.schema}
+				initialValues={this.defaults}
+				onSubmit={this.handleSubmit}
+			>
 			</Formik>
 		);
 	}
