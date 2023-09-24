@@ -4,8 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import {
 	BrowserRouter as Router,
-	Routes,
-	Route
+	Switch
 } from "react-router-dom";
 import ContactForm from './ContactForm';
 import WOFSpinAnalyser from './WOFSpinAnalyser';
@@ -53,12 +52,10 @@ class Homepage extends React.Component
 				</Navbar.Collapse>
 			</Navbar>
 
-			<Routes>
-				<Route path="/contact" element={<ContactForm />}>
-				</Route>
-				<Route path="/wof" element={<WOFSpinAnalyser />}>
-				</Route>
-			</Routes>
+			<Switch>
+				<Route path="/contact" children={<ContactForm />} />
+				<Route path="/wof" children={<WOFSpinAnalyser />} />
+			</Switch>
 		</Router>
 		);
 	}
