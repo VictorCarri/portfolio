@@ -53,6 +53,7 @@ class Homepage extends React.Component
 			</Navbar>
 
 			<Switch>
+				<Route exact path="/" exact element={<Homepage />} />
 				<Route path="/contact" children={<ContactForm />} />
 				<Route path="/wof" children={<WOFSpinAnalyser />} />
 			</Switch>
