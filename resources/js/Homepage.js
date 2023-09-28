@@ -4,7 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import {
 	BrowserRouter as Router,
-	Switch
+	Switch,
+	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
 import WOFSpinAnalyser from './WOFSpinAnalyser';
