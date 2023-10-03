@@ -44,5 +44,6 @@ class ContactFormSent extends Mailable
 	Log::debug("ContactFormSent::build called");
         return $this->view('mail.html.contact') // Default to the HTML view
 		->text("mail.text.contact"); // Plaintext view
+		//->from($this->senderEmail, $this->senderName); // Set the from info
     }
 }
