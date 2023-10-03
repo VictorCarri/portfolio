@@ -15,9 +15,9 @@ class SendContactForm extends Controller
      * Handle the incoming request.
 	* @param Request The incoming Request.
      */
-    public function __invoke(Request $request)
+    public function ___invoke(Request $request)
     {
-	Log::debug("SendContactForm::_invoke before validation:\nname = \"" . $request->name . "\"\nemail = \"" . $request->email . "\"\nmessage = \"" . $request->message . "\""); // Debugging
+	Log::debug("SendContactForm::__invoke before validation:\nname = \"" . $request->name . "\"\nemail = \"" . $request->email . "\"\nmessage = \"" . $request->message . "\""); // Debugging
 
 	/* Validate the request parameters */
 	try
