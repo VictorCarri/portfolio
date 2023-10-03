@@ -3,8 +3,8 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import {
-	BrowserRouter as Router,
-	Switch,
+	BrowserRouter,
+	Routes,
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
@@ -25,7 +25,7 @@ class Homepage extends React.Component
 	render()
 	{
 		return (
-		<Router>
+		<BrowserRouter basename="/">
 			<Navbar bg="light" expand="lg" collapseOnSelect>
 				<Navbar.Brand href="#home">
 					Victor Carri
@@ -52,12 +52,10 @@ class Homepage extends React.Component
 				</Navbar.Collapse>
 			</Navbar>
 
-			<Switch>
-				<Route path="/contact">
-					<ContactForm />
-				</Route>
-			</Switch>
-		</Router>
+			<Routes>
+				<Route path="/contact" element={<ContactForm />} />
+			</Routes>
+		</BrowserRouter>
 		);
 	}
 }

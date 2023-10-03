@@ -1,15 +1,16 @@
 {
-    "name": "laravel/laravel",
+    "name": "victorcarri/portfolio",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "My Portfolio Website",
     "keywords": [
-        "framework",
-        "laravel"
+        "react",
+        "laravel",
+	"website"
     ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "aws/aws-sdk-php": "^3.185",
+        "aws/aws-sdk-php": "^3.263",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "graham-campbell/github": "^10.3",
@@ -28,11 +29,16 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+			"TelescopeServiceProvider"
+		]
         }
     },
     "autoload": {
