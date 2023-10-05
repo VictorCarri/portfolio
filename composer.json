@@ -11,14 +11,15 @@
     "require": {
         "php": "^7.3|^8.0",
         "aws/aws-sdk-php": "^3.263",
-        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^3.0",
         "graham-campbell/github": "^10.3",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
-        "symfony/mailer": "^6.0"
+        "symfony/http-client": "^6.0",
+        "symfony/mailer": "6.0",
+        "symfony/postmark-mailer": "^6.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
