@@ -6,7 +6,6 @@ use Illuminate\Http\Request; // The Request from the route
 use App\Mail\ContactFormSent; // The Mailable to send
 use Illuminate\Support\Facades\Mail; // Mail facade to send mail with
 use Illuminate\Support\Facades\Log; // Log::debug
-#use Illuminate\Support\Str; 
 use Illuminate\Validation\ValidationException; // To log what the exception says
 
 class SendContactForm extends Controller
@@ -15,7 +14,7 @@ class SendContactForm extends Controller
      * Handle the incoming request.
 	* @param Request The incoming Request.
      */
-    public function ___invoke(Request $request)
+    public function __invoke(Request $request)
     {
 	Log::debug("SendContactForm::__invoke before validation:\nname = \"" . $request->name . "\"\nemail = \"" . $request->email . "\"\nmessage = \"" . $request->message . "\""); // Debugging
 
