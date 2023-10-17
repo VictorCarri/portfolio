@@ -15,14 +15,14 @@
         "graham-campbell/github": "^10.3",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
-        "laravel/framework": "^9.0",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
         "symfony/http-client": "^6.0",
         "symfony/mailer": "6.0",
         "symfony/postmark-mailer": "^6.0"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^1.0",
+        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
