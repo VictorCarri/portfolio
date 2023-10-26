@@ -1,0 +1,13 @@
+option_settings:
+	aws:elasticbeanstalk:environment:proxy:staticfiles:
+		/static/: public/
+	
+	aws:elasticbeanstalk:container:nodejs:
+		NodeCommand: "npm run start"
+container_commands:
+	01_rewrite_for_react:
+		command: |
+			echo "RewriteEngine On
+			RewriteCond %{REQUEST_FILENAME} !-f
+			RewriteCond %{REQUEST_FILENAME} ! -d
+			RewriteRUle ./index.html [L]" > /var/www/html/static/.htaccess
