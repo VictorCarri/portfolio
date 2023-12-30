@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/* Sends an e-mail using the contact form */
-Route::post("/sendMail", SendContactForm::class)->name("sendEmail");
+Route::post("/sendMail", SendContactForm::class)->name("sendEmail"); // Sends an e-mail using the contact form */
+Route::get("/wofData", );
