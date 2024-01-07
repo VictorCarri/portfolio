@@ -18,6 +18,5 @@ use App\Http\Controllers\SendContactForm; // Controller that sends our contact f
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post("/sendMail", SendContactForm::class)->name("sendEmail"); // Sends an e-mail using the contact form */
-//Route::get("/wofData", GetWOFData::class);
+Route::post("/sendMail", SendContactForm::class)->name("sendEmail"); // Sends an e-mail using the contact form
+Route::get("/wofData", GetWOFData::class);

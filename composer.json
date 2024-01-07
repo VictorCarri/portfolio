@@ -16,15 +16,15 @@
         "graham-campbell/github": "^10.3",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -51,7 +51,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
