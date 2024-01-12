@@ -31,7 +31,8 @@ class ContactForm extends React.Component
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		/* Setup to contact the Laravel API */
-		this.apiURI = new URL("http://localhost:8000/api/sendMail");
+		this.apiURI = new URL(window.location.protocol + "//" + window.location.hostname + "/api/sendMail");
+		console.log("Contact form API URI: %o", this.apiURI);
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})

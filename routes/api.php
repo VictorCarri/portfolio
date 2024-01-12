@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendContactForm; // Controller that sends our contact form
+use App\Http\Controllers\GetWOFData; // The controller that fetches WOF data for my display page
 
 /*
 |--------------------------------------------------------------------------
