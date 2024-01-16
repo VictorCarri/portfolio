@@ -18,7 +18,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
         "symfony/http-client": "^6.0",
-        "symfony/mailer": "6.0",
+        "symfony/mailer": "^6.2",
         "symfony/postmark-mailer": "^6.0"
     },
     "require-dev": {
