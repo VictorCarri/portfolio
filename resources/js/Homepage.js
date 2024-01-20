@@ -11,7 +11,6 @@ import ContactForm from './ContactForm';
 import AboutMe from "./AboutMe";
 
 /* CSS */
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Homepage.css';
 
 /**
