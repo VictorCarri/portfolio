@@ -18,7 +18,7 @@ class AboutMe extends React.Component
 		return (
 			<p>
 				Hi! I'm Victor Carri! I'm a developer who likes having fun both on and off the computer. When I'm not working on a software project, I'm learning languages, playing games, or hanging out with my friends.
-				<Image src={profilePic} />
+				<Image src={profilePic} roundedCircle fluid />
 			</p>
 		);
 	}
