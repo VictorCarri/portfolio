@@ -31,7 +31,7 @@ class AboutMe extends React.Component
 						<Image src={profilePic} roundedCircle fluid width={this.imgWidth} height={this.imgWidth} />
 					</Col>
 					<Col xs={16}>
-						Hi! I'm Victor Carri! I'm a developer who likes having fun both on and off the computer. When I'm not working on a software project, I'm learning languages, playing games, or hanging out with my friends. Feel free to click the link above to contact me.
+						Hi! I'm Victor Carri! I'm a developer who likes having fun both on and off the computer. When I'm not working on a software project, I'm learning languages, playing games, or hanging out with my friends. Feel free to click on the &quot;Contact&quot; tab above to reach a form that you can contact me with.
 					</Col>
 				</Row>
 			</Container>
