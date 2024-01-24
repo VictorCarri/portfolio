@@ -10,9 +10,6 @@ import {
 import ContactForm from './ContactForm';
 import AboutMe from "./AboutMe";
 
-/* CSS */
-import '../css/Homepage.css';
-
 /**
 * The main homepage website class.
 **/
