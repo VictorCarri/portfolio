@@ -8,10 +8,7 @@ import {
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
-
-/* CSS */
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/Homepage.css';
+import AboutMe from "./AboutMe";
 
 /**
 * The main homepage website class.
@@ -53,6 +50,7 @@ class Homepage extends React.Component
 			</Navbar>
 
 			<Routes>
+				<Route path="/" element={<AboutMe />} />
 				<Route path="/contact" element={<ContactForm />} />
 			</Routes>
 		</BrowserRouter>
