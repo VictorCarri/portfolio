@@ -3,16 +3,15 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import {
-	BrowserRouter as Router,
-	Switch,
+	BrowserRouter,
+	Routes,
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
 import WOFSpinAnalyser from './WOFSpinAnalyser';
 
 /* CSS */
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/Homepage.css';
+import AboutMe from "./AboutMe";
 
 /**
 * The main homepage website class.
@@ -26,7 +25,7 @@ class Homepage extends React.Component
 	render()
 	{
 		return (
-		<Router>
+		<BrowserRouter basename="/">
 			<Navbar bg="light" expand="lg" collapseOnSelect>
 				<Navbar.Brand href="#home">
 					Victor Carri
@@ -53,12 +52,11 @@ class Homepage extends React.Component
 				</Navbar.Collapse>
 			</Navbar>
 
-			<Switch>
-				<Route exact path="/" exact element={<Homepage />} />
-				<Route path="/contact" children={<ContactForm />} />
-				<Route path="/wof" children={<WOFSpinAnalyser />} />
-			</Switch>
-		</Router>
+			<Routes>
+				<Route path="/" element={<AboutMe />} />
+				<Route path="/contact" element={<ContactForm />} />
+			</Routes>
+		</BrowserRouter>
 		);
 	}
 }
