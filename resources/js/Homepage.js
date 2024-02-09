@@ -55,6 +55,7 @@ class Homepage extends React.Component
 			<Routes>
 				<Route path="/" element={<AboutMe />} />
 				<Route path="/contact" element={<ContactForm />} />
+				<Route path="/wof" element={<WOFSpinAnalyser />} />
 			</Routes>
 		</BrowserRouter>
 		);

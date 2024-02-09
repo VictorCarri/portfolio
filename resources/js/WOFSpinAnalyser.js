@@ -16,4 +16,4 @@ class WOFSpinAnalyser extends React.Component
 	}
 }
 
-export default WOFSpinAnalyser
+export default WOFSpinAnalyser;
