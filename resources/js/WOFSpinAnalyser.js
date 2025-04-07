@@ -10,6 +10,7 @@ class WOFSpinAnalyser extends React.Component
 	constructor(props)
 	{
 		super(props);
+		this.apiURI = new URL(location.protocol + "://" + location.host + "/api/getWOFData");
 	}
 
 	componentDidMount()
