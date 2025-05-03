@@ -10,12 +10,28 @@ class WOFSpinAnalyser extends React.Component
 	constructor(props)
 	{
 		super(props);
-		this.apiURI = new URL(location.protocol + "://" + location.host + "/api/getWOFData");
+		this.countURI = new URL(location.protocol + "//wof-spring-boot-test-env.eba-is45gqj2.ca-central-1.elasticbeanstalk.com/count"); // URI for the count function
+	}
+
+	handleFetchingCount(e)
+	{
+		console.log("handleFetchingCount: received input %o", e);
+	}
+
+	handleErrorWhileFetchingCount(e)
+	{
+		console.log("handleErrorWhileFetchingCount: received input %o", e);
 	}
 
 	componentDidMount()
 	{
 		alert("Hi from the WOF effect!");
+		fetch(this.countURI, 
+			{
+				mode: "cors"
+			}
+		).then(this.handleFetchingCount.bind(this))
+		.catch(this.handleErrorWhileFetchingCount.bind(this));
 	}
 
 	render()

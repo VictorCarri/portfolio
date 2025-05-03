@@ -10,4 +10,4 @@ container_commands:
 			echo "RewriteEngine On
 			RewriteCond %{REQUEST_FILENAME} !-f
 			RewriteCond %{REQUEST_FILENAME} ! -d
-			RewriteRUle ./index.html [L]" > /var/www/html/static/.htaccess
+			RewriteRule ./index.html [L]" > /var/www/html/static/.htaccess
