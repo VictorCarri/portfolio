@@ -62,7 +62,7 @@ class SendContactFormTest extends TestCase
 		$response
 			->assertJson(
 				[
-					"formSent" => true
+					"formSent" => "true"
 				]
 			);
 	}

@@ -37,21 +37,12 @@ class ContactForm extends React.Component
 	handleSubmit(values, {setSubmitting, resetForm})
 	{
 		setSubmitting(true); // When button resets form and form is in the process of submission
-		/*console.log("Values passed to handleSubmit: %o", values);
 		
 		/* Convert the object to form data for the request */
 		var toSend = new FormData();
-	
-		/*for (var key in values)
-		{
-			console.log("values[%s] = %o", key, values[key]);
-			toSend.append(key, values[key]);
-		}*/
-
 		toSend.append("name", document.querySelectorAll("#nameInp")[0].value);
 		toSend.append("email", document.querySelectorAll("#emInp")[0].value);
 		toSend.append("message", document.querySelectorAll("#msgInp")[0].value);
-		console.log(toSend);
 		fetch(this.apiURI, {
 				method: "POST",
 				body: toSend, // Send the form data
@@ -62,30 +53,13 @@ class ContactForm extends React.Component
 		.then(res => { 
 			try
 			{
-				console.log("Raw result of POST: %o", res);
-				window.postResult = res;
-				window.jsonRes = res.json();
-				return window.jsonRes;
+				return res.json();
 			}
 
 			catch (e)
 			{
 				console.log("Error while converting result to json: %o", e);
 				throw e;
-			}
-		})
-		.then(res => {
-			return;
-			console.log("Result after being converted to JSON: %o", res);
-
-			if (res.formSent)
-			{
-				alert("Thanks for sending me a message. I'll get back to you ASAP.");
-			}
-
-			else
-			{
-				alert("An error occurred while sending your response.");
 			}
 		})
 		.catch(err => console.log("Error occurred while sending mail: %o", err));

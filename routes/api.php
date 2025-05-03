@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendContactForm; // Controller that sends our contact form
+use App\Http\Controllers\GetWOFData; // The controller that fetches WOF data for my display page
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,5 @@ use App\Http\Controllers\SendContactForm; // Controller that sends our contact f
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-/* Sends an e-mail using the contact form */
-Route::post("/sendMail", SendContactForm::class)->name("sendEmail");
+Route::post("/sendMail", SendContactForm::class)->name("sendEmail"); // Sends an e-mail using the contact form
+Route::get("/wofData", GetWOFData::class)->name("getWOFData");
