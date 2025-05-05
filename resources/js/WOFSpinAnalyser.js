@@ -16,6 +16,7 @@ class WOFSpinAnalyser extends React.Component
 	handleFetchingCount(e)
 	{
 		console.log("handleFetchingCount: received input %o", e);
+		this.a
 	}
 
 	handleErrorWhileFetchingCount(e)
