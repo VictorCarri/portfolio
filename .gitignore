@@ -13,3 +13,8 @@ node_modules*
 *.bak.*
 *.tgz
 .git
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
