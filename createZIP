@@ -1,3 +1,8 @@
 #!/bin/bash
 #git archive -v -o ../portfolio.zip --format=zip HEAD
+
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
 git archive --format=zip -v -o ../portfolio-awsdep-`date +%Y-%m-%d_%H-%M-%S`.zip HEAD
