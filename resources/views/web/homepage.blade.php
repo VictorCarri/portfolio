@@ -1,3 +1,7 @@
+@php
+	use Illuminate\Support\Facades\Log;
+	Log::debug("Loading Blade template");
+@endphp
 <!DOCTYPE html>
 <html>
 	<head>

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendContactForm; // Controller that sends our contact form
 use App\Http\Controllers\GetWOFData; // The controller that fetches WOF data for my display page
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use App\Http\Controllers\GetWOFData; // The controller that fetches WOF data for
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Log::debug("Registering API routes");
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
