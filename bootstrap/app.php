@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -39,6 +41,30 @@ $app->singleton(
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
+);
+
+$app->withMiddleware(
+	function (Middleware $middleWare)
+	{
+		$environment = env("APP_ENV"); // Cloud environment detection
+
+		switch ($environment)
+		{
+			case "production":
+			{
+				break;
+			}
+		}
+
+		$middleWare->trustProxies(
+			at: '*',
+			headers: Request::HEADER_X_FORWARDED_FOR |
+        Request::HEADER_X_FORWARDED_HOST |
+        Request::HEADER_X_FORWARDED_PORT |
+        Request::HEADER_X_FORWARDED_PROTO |
+        Request::HEADER_X_FORWARDED_AWS_ELB
+		);
+	}
 );
 
 /*
