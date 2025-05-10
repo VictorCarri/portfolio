@@ -18,3 +18,6 @@ node_modules*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Hosting files
+/app/Http/Middleware/TrustHosts.php

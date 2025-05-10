@@ -43,7 +43,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-$app->withMiddleware(
+/*$app->withMiddleware(
 	function (Middleware $middleWare)
 	{
 		$environment = env("APP_ENV"); // Cloud environment detection
@@ -52,20 +52,20 @@ $app->withMiddleware(
 		{
 			case "production":
 			{
+				$middleWare->trustProxies(
+					at: '*',
+					headers: Request::HEADER_X_FORWARDED_FOR |
+		        Request::HEADER_X_FORWARDED_HOST |
+		        Request::HEADER_X_FORWARDED_PORT |
+		        Request::HEADER_X_FORWARDED_PROTO |
+		        Request::HEADER_X_FORWARDED_AWS_ELB
+				);
 				break;
 			}
 		}
 
-		$middleWare->trustProxies(
-			at: '*',
-			headers: Request::HEADER_X_FORWARDED_FOR |
-        Request::HEADER_X_FORWARDED_HOST |
-        Request::HEADER_X_FORWARDED_PORT |
-        Request::HEADER_X_FORWARDED_PROTO |
-        Request::HEADER_X_FORWARDED_AWS_ELB
-		);
 	}
-);
+);*/
 
 /*
 |--------------------------------------------------------------------------
