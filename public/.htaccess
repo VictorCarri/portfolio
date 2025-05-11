@@ -1,4 +1,33 @@
 # Redirect all requests to React's index.PHP (for SPAs)
-RewriteEngine On
-RewriteCond %{REQUEST_URI} !^/index\.php$
-RewriteRule ^ /index.php [L]
+#RewriteEngine On
+#
+## Exclude content files (including JS)
+#RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|ico|svg|eot|woff|woff2|ttf|otf|map|json)$ [NC]
+#
+## Exclude the build folder (adjust if your React build folder is named differently)
+#RewriteCond %{REQUEST_URI} !^/build/ [NC] 
+#
+#
+#RewriteRule ^ /index.php [L]
+#
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

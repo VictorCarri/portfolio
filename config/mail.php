@@ -108,4 +108,6 @@ return [
         ],
     ],
 
+	'to' => env('MAIL_TO_ADDRESS', 'victor@victorcarri.com')
+
 ];

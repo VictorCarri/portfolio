@@ -32,6 +32,7 @@ class ContactForm extends React.Component
 
 		/* Setup to contact the Laravel API */
 		this.apiURI = new URL(location.protocol + "//" + location.host + "/api/sendMail");
+		console.log("API URI: " + this.apiURI);
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})
@@ -43,6 +44,7 @@ class ContactForm extends React.Component
 		toSend.append("name", document.querySelectorAll("#nameInp")[0].value);
 		toSend.append("email", document.querySelectorAll("#emInp")[0].value);
 		toSend.append("message", document.querySelectorAll("#msgInp")[0].value);
+		console.log(toSend);
 		fetch(this.apiURI, {
 				method: "POST",
 				body: toSend, // Send the form data

@@ -9,14 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie-edge">
 		<title>Victor Carri</title>
-	{--	@push('scripts')
+		@push('scripts')
 			<script defer type="application/javascript" src="{{ asset('js/index.js') }}"></script>
-		@endpush--}
+		@endpush
 	</head>
 	<body>
 		<div id="root">
 		</div>
-		{--@stack('scripts')--}
-		{{ request()->secure() ? 'HTTPS' : 'HTTP' }}
+		@stack('scripts')
 	</body>
 </html>
