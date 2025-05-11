@@ -29,10 +29,25 @@ class ContactForm extends React.Component
 
 		/* Bind event handlers */
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.hideSuccessAlert = this.hideSuccessAlert.bind(this);
 
 		/* Setup to contact the Laravel API */
 		this.apiURI = new URL(location.protocol + "//" + location.host + "/api/sendMail");
 		console.log("API URI: " + this.apiURI);
+
+		/* State */
+		this.state = {
+			showSuccessAlert: false
+		};
+	}
+
+	hideSuccessAlert()
+	{
+		this.setState(
+			{
+				showSuccessAlert: false
+			}
+		);
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})
@@ -55,7 +70,19 @@ class ContactForm extends React.Component
 		.then(res => { 
 			try
 			{
-				return res.json();
+				res.json().then(resp => {
+						console.log("Response JSON: %o", resp);	
+					
+						if (resp.formSent)
+						{
+							alert("Successfully sent your message!");
+							this.setState({showSuccessAlert: true});
+							setTimeout(this.hideSuccessAlert, 3000);
+						}
+					}
+				).catch(e => {
+					console.log("Error while converting result to JSON: %o", e);
+				});
 			}
 
 			catch (e)
@@ -75,86 +102,92 @@ class ContactForm extends React.Component
 	render()
 	{
 		return (
-			<Formik
-				initialValues={this.defaults}
-				validationSchema={this.schema}
-				onSubmit={this.handleSubmit}
-			>
-			{
-				(
-					{
-						errors,
-						touched,
-						handleSubmit,
-						isSubmitting
-					}
-				) => 
-				(
-					<rb.Form
-						noValidate
-						onSubmit={handleSubmit}
-					>
-						<rb.Form.Group>
-							<rb.Form.Text>
-								Please fill in your name, your email, and the message you&apos;d like to send me. I&apos;ll get back to you as soon as possible.
-							</rb.Form.Text>
-						</rb.Form.Group>
-						<rb.Form.Group>
-							<rb.Form.Label>
-								Name
-							</rb.Form.Label>
-							<rb.Form.Control
-								type="text"
-								name="name"
-								placeholder="Full Name"
-								isValid={touched.name && !errors.name}
-								aria-describedby="nameHelpBlock"
-								id="nameInp"
-							/>
-							<rb.Form.Text id="nameHelpBlock" muted>
-								Please enter your name - whatever you&apos;d like me to address you as.
-							</rb.Form.Text>
-						</rb.Form.Group>
-						<rb.Form.Group>
-							<rb.Form.Label>
-								Email
-							</rb.Form.Label>
-							<rb.Form.Control
-								type="email"
-								name="email"
-								isValid={touched.email && !errors.email}
-								placeholder="Email"
-								aria-describedby="emHlpBlck"
-								id="emInp"
-							/>
-							<rb.Form.Text id="emHlpBlck" muted>
-								Please enter an e-mail I can reach you at.
-							</rb.Form.Text>
-						</rb.Form.Group>
-						<rb.Form.Group>
-							<rb.Form.Label>
-								Message
-							</rb.Form.Label>
-							<rb.Form.Control
-								as="textarea"
-								isValid={touched.message && !errors.message}
-								name="message"
-								placeholder="Message"
-								aria-describedby="msgHlpBlck"
-								id="msgInp"
-							/>
-							<rb.Form.Text id="msgHlpBlck" muted>
-								Please enter your message.
-							</rb.Form.Text>
-						</rb.Form.Group>
-						{errors.name && <div id="feedback">{errors.name}</div>}
-						<rb.Button variant="primary" type="submit" disabled={isSubmitting} name="submit">
-							Send your message
-						</rb.Button>
-					</rb.Form>
-				)
-			}
-			</Formik>
+			<div>
+				{this.state.showSuccessAlert && <rb.Alert key="successDialog" variant="success">
+					Successfully sent mail!
+				</rb.Alert>
+				}
+				<Formik
+					initialValues={this.defaults}
+					validationSchema={this.schema}
+					onSubmit={this.handleSubmit}
+				>
+				{
+					(
+						{
+							errors,
+							touched,
+							handleSubmit,
+							isSubmitting
+						}
+					) => 
+					(
+						<rb.Form
+							noValidate
+							onSubmit={handleSubmit}
+						>
+							<rb.Form.Group>
+								<rb.Form.Text>
+									Please fill in your name, your email, and the message you&apos;d like to send me. I&apos;ll get back to you as soon as possible.
+								</rb.Form.Text>
+							</rb.Form.Group>
+							<rb.Form.Group>
+								<rb.Form.Label>
+									Name
+								</rb.Form.Label>
+								<rb.Form.Control
+									type="text"
+									name="name"
+									placeholder="Full Name"
+									isValid={touched.name && !errors.name}
+									aria-describedby="nameHelpBlock"
+									id="nameInp"
+								/>
+								<rb.Form.Text id="nameHelpBlock" muted>
+									Please enter your name - whatever you&apos;d like me to address you as.
+								</rb.Form.Text>
+							</rb.Form.Group>
+							<rb.Form.Group>
+								<rb.Form.Label>
+									Email
+								</rb.Form.Label>
+								<rb.Form.Control
+									type="email"
+									name="email"
+									isValid={touched.email && !errors.email}
+									placeholder="Email"
+									aria-describedby="emHlpBlck"
+									id="emInp"
+								/>
+								<rb.Form.Text id="emHlpBlck" muted>
+									Please enter an e-mail I can reach you at.
+								</rb.Form.Text>
+							</rb.Form.Group>
+							<rb.Form.Group>
+								<rb.Form.Label>
+									Message
+								</rb.Form.Label>
+								<rb.Form.Control
+									as="textarea"
+									isValid={touched.message && !errors.message}
+									name="message"
+									placeholder="Message"
+									aria-describedby="msgHlpBlck"
+									id="msgInp"
+								/>
+								<rb.Form.Text id="msgHlpBlck" muted>
+									Please enter your message.
+								</rb.Form.Text>
+							</rb.Form.Group>
+							{errors.name && <div id="feedback">{errors.name}</div>}
+							<rb.Button variant="primary" type="submit" disabled={isSubmitting} name="submit">
+								Send your message
+							</rb.Button>
+						</rb.Form>
+					)
+				}
+				</Formik>
+			</div>
 		);
 	}
 }
