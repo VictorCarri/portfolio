@@ -1,0 +1,4 @@
+# Redirect all requests to React's index.PHP (for SPAs)
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteRule ^ /index.php [L]
