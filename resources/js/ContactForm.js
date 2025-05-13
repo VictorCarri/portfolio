@@ -39,6 +39,7 @@ class ContactForm extends React.Component
 		this.state = {
 			showSuccessAlert: false
 		};
+		console.log("this.state = %o", this.state);
 	}
 
 	hideSuccessAlert()
@@ -49,6 +50,7 @@ class ContactForm extends React.Component
 				showSuccessAlert: false
 			}
 		);
+		console.log("this.state = %o", this.state);
 	}
 
 	handleSubmit(values, {setSubmitting, resetForm})
