@@ -43,6 +43,7 @@ class ContactForm extends React.Component
 
 	hideSuccessAlert()
 	{
+		console.log("Hiding success alert");
 		this.setState(
 			{
 				showSuccessAlert: false
@@ -103,10 +104,6 @@ class ContactForm extends React.Component
 	{
 		return (
 			<div>
-				{this.state.showSuccessAlert && <rb.Alert key="successDialog" variant="success">
-					Successfully sent mail!
-				</rb.Alert>
-				}
 				<Formik
 					initialValues={this.defaults}
 					validationSchema={this.schema}
@@ -187,6 +184,14 @@ class ContactForm extends React.Component
 					)
 				}
 				</Formik>
+				<rb.Modal show={this.state.showSuccessAlert} onHide={this.hideSuccessAlert}>
+					<rb.Modal.Header closeButton>
+						<rb.Modal.Title>E-mail sent</rb.Modal.Title>
+					</rb.Modal.Header>
+					<rb.Modal.Body>
+						Successfully sent myself your message!
+					</rb.Modal.Body>
+				</rb.Modal>
 			</div>
 		);
 	}
