@@ -75,7 +75,7 @@ class ContactForm extends React.Component
 					
 						if (resp.formSent)
 						{
-							alert("Successfully sent your message!");
+							//alert("Successfully sent your message!");
 							this.setState({showSuccessAlert: true});
 							setTimeout(this.hideSuccessAlert, 3000);
 						}
