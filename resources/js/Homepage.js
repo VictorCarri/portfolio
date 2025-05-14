@@ -8,10 +8,10 @@ import {
 	Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
+import WOFSpinAnalyser from './WOFSpinAnalyser';
 
 /* CSS */
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/Homepage.css';
+import AboutMe from "./AboutMe";
 
 /**
 * The main homepage website class.
@@ -39,8 +39,8 @@ class Homepage extends React.Component
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link href="/projects">
-								Projects
+							<Nav.Link href="/wof">
+								Wheel of Fortune Spin Analyser
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
@@ -53,7 +53,9 @@ class Homepage extends React.Component
 			</Navbar>
 
 			<Routes>
+				<Route path="/" element={<AboutMe />} />
 				<Route path="/contact" element={<ContactForm />} />
+				<Route path="/wof" element={<WOFSpinAnalyser />} />
 			</Routes>
 		</BrowserRouter>
 		);

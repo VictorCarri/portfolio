@@ -1,2 +1,5 @@
 #!/bin/bash
-git archive -v -o ../portfolio.zip --format=zip HEAD
+#git archive -v -o ../portfolio.zip --format=zip HEAD
+#git archive --format=zip -v -o ../portfolio-awsdep-`date +%Y-%m-%d_%H-%M-%S`.zip HEAD
+cd /home/victor/Programming/PHP/portfolio
+zip ../portfolio-`date +%Y%m%d%H%M%S`.zip -r * .[^.]* -x "vendor/*" -x ".git/*" -x "*.swp"

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Homepage with React */
-/*Route::get("/test", function() {
-		return "Hello from Laravel.";
-	}
-);*/
 Route::view("/{path?}", "web.homepage") // Shortcut - return the homepage view from the root URL
 	->where("path", ".*") // Redirect all paths
 	->name("homepage"); // Name the route for later use
+Log::debug("Registered main view route");
