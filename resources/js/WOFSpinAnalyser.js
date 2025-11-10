@@ -10,34 +10,31 @@ class WOFSpinAnalyser extends React.Component
 	constructor(props)
 	{
 		super(props);
-		this.countURI = new URL(location.protocol + "//wof-spring-boot-test-env.eba-is45gqj2.ca-central-1.elasticbeanstalk.com/count"); // URI for the count function
-	}
-
-	handleFetchingCount(e)
-	{
-		console.log("handleFetchingCount: received input %o", e);
-	}
-
-	handleErrorWhileFetchingCount(e)
-	{
-		console.log("handleErrorWhileFetchingCount: received input %o", e);
 	}
 
 	componentDidMount()
 	{
-		alert("Hi from the WOF effect!");
-		fetch(this.countURI, 
-			{
-				mode: "cors"
-			}
-		).then(this.handleFetchingCount.bind(this))
-		.catch(this.handleErrorWhileFetchingCount.bind(this));
 	}
 
 	render()
 	{
 		return (
-			<p>Hello, world!</p>
+			<div>
+				<h1>Gameshow Data Analyser</h1>
+				<br />
+				<section>
+					<h2>What is it?</h2>
+					<div>
+						<p>
+							The backstory is that a family member of mine asserted &#40;without evidence&#41; that a <span class="italic">certain</span> game show&apos;s results weren&apos;t randomly distributed. Thus, they claimed that the part of the gameshow that was meant to assign a random result to a contestant was unfair.
+						</p>
+						<br />
+						<p>
+							Being someone who strives to be objective and logical, I decided to start recording data about this part of the gameshow, so that I could eventually analyse it.
+						</p>
+					</div>
+				</section>
+			</div>
 		);
 	}
 }
