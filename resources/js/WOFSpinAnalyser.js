@@ -1,6 +1,9 @@
 /* JS */
 import React from 'react';
 
+/* CSS */
+import "../css/wof.css";
+
 class WOFSpinAnalyser extends React.Component
 {
 	/**
@@ -30,8 +33,12 @@ class WOFSpinAnalyser extends React.Component
 						</p>
 						<br />
 						<p>
-							Being someone who strives to be objective and logical, I decided to start recording data about this part of the gameshow, so that I could eventually analyse it.
+							Being someone who strives to be objective and logical, I decided to start recording data about this part of the gameshow, so that I could eventually analyse it. I started recording each day&apos;s &quot;final spin&quot; value &#40;the slot that the arrow on the final spin wheel settled on after the contestant who made it to the final round spun it&#41; in a spreadsheet, and decided to figure out how to analyse it later.
 						</p>
+						<br />
+						My first attempt at analysing this was to make a pie chart that shows what percentage of the time each of the possible values on the wheel shows up. This would allow me to determine how close to the theoretically fair ideal results they came, or how far from them they strayed. I decided to build this pie chart as an Angular project to gain experience in building and deploying an Angular app. I built my Angular app locally, then deployed it on AWS.
+						<br />
+						<iframe src="https://wofchart.victorcarri.com/"></iframe>
 					</div>
 				</section>
 			</div>

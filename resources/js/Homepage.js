@@ -9,9 +9,9 @@ import {
 } from "react-router-dom";
 import ContactForm from './ContactForm';
 import WOFSpinAnalyser from './WOFSpinAnalyser';
+import AboutMe from "./AboutMe";
 
 /* CSS */
-import AboutMe from "./AboutMe";
 
 /**
 * The main homepage website class.
@@ -40,7 +40,7 @@ class Homepage extends React.Component
 						</Nav.Item>
 						<Nav.Item>
 							<Nav.Link href="/wof">
-								Wheel of Fortune Spin Analyser
+								Gameshow Result Analyser
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
