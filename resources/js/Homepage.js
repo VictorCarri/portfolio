@@ -10,6 +10,7 @@ import {
 import ContactForm from './ContactForm';
 import WOFSpinAnalyser from './WOFSpinAnalyser';
 import AboutMe from "./AboutMe";
+import MalNounDB from "./MalNounDB";
 
 /* CSS */
 
@@ -39,13 +40,18 @@ class Homepage extends React.Component
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
+							<Nav.Link href="/contact">
+								Contact
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
 							<Nav.Link href="/wof">
 								Gameshow Result Analyser
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link href="/contact">
-								Contact
+							<Nav.Link href="/malNounDB">
+								Malayalam Noun Database
 							</Nav.Link>
 						</Nav.Item>
 					</Nav>
@@ -56,6 +62,7 @@ class Homepage extends React.Component
 				<Route path="/" element={<AboutMe />} />
 				<Route path="/contact" element={<ContactForm />} />
 				<Route path="/wof" element={<WOFSpinAnalyser />} />
+				<Route path="/malNounDB" element={<MalNounDB />} />
 			</Routes>
 		</BrowserRouter>
 		);
