@@ -13,3 +13,12 @@ node_modules*
 *.bak.*
 *.tgz
 .git
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Hosting files
+app/Http/Middleware/TrustHosts.php
+app/Http/Middleware/TrustProxies.php
