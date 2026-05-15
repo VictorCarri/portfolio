@@ -16,3 +16,8 @@ code {
 {
 	font-style: italic;
 }
+
+iframe {
+	width: 100%;
+	height: 600%;
+}
