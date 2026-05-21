@@ -2,6 +2,9 @@
 import React from 'react';
 import * as rb from 'react-bootstrap';
 
+/* CSS */
+import "../css/wof.css";
+
 class WOFSpinAnalyser extends React.Component
 {
 	/**
@@ -11,6 +14,10 @@ class WOFSpinAnalyser extends React.Component
 	constructor(props)
 	{
 		super(props);
+	}
+
+	componentDidMount()
+	{
 	}
 
 	render()

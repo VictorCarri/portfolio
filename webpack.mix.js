@@ -11,6 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js("resources/js/index.js", "public/js")
+mix.options({progress: false})
+	.js("resources/js/index.js", "public/js")
 	.react()
 	.sourceMaps();
