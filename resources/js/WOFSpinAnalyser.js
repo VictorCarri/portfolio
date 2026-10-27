@@ -39,7 +39,7 @@ class WOFSpinAnalyser extends React.Component
 							Next, I built an Angular app that fetched the data from this Java app and displayed it as a pie chart, using a library. I then deployed this app to AWS, and put this under another of my subdomains.
 							<br />
 							<br />
-							Finally, I have embedded this here on my portfolio.
+							Finally, I have embedded this here on my portfolio. It can also be accessed <a href="https://wofchart.victorcarri.com">online</a>.
 						</span>
 					</rb.Col>
 				</rb.Row>
